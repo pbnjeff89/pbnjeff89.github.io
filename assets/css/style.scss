@@ -7,6 +7,7 @@ nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  background-color: #f3f3f3;
   overflow: hidden;
 }
 
@@ -14,14 +15,19 @@ nav ul li {
   float: left;
 }
 
-nav ul li {
-  border-right: 1px solid;
+nav ul li a{
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16 px;
+  text-decoration: none;
 }
 
 footer ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  background-color: #f3f3f3;
   overflow: hidden;
 }
 
@@ -29,6 +35,10 @@ footer ul li {
   float: left;
 }
 
-footer ul li {
-  border-right: 1px solid;
+footer ul li a{
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16 px;
+  text-decoration: none;
 }
