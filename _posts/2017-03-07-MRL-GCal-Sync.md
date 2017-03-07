@@ -1,4 +1,4 @@
----
+ï»¿---
 layout: post
 title: "Syncing Calendars"
 date: 2017-03-07
@@ -56,4 +56,4 @@ There are some other issues with dealing with RFC3339 formatting and making sure
 
 ![Final Google Calendar](/assets/images/2017-03-05-final-cal.png)
 
-At this point, I’m hoping to graduate soon, so I don’t really know how much more I’m willing to work on this, but you could always check out my code on github and make more improvements. One thing I know that can and should absolutely be changed is the hard-coding that is used. In principle, the variables user and password ought to take information from an external file (like how the GCalHelper file accesses `client_secret.json`) so that information is kept safe and the script is not tied to a specific individual. Like I mentioned above, perhaps the MRL staff could implement an API to help the MRL users access schedule data much more easily. You could imagine that doing so could also aid in the development of a mobile app, though I think that is probably still a bit naive and trivial if the MRL staff just release a web version of the scheduling website.
+At this point, I'm hoping to graduate soon, so I don't really know how much more I'm willing to work on this, but you could always check out my code on github and make more improvements. One thing I know that can and should absolutely be changed is the hard-coding that is used. In principle, the variables user and password ought to take information from an external file (like how the GCalHelper file accesses `client_secret.json`) so that information is kept safe and the script is not tied to a specific individual. Like I mentioned above, perhaps the MRL staff could implement an API to help the MRL users access schedule data much more easily. You could imagine that doing so could also aid in the development of a mobile app, though I think that is probably still a bit naive and trivial if the MRL staff just release a web version of the scheduling website.
