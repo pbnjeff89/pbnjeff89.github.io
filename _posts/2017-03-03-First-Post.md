@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "First post"
+title: "Syncing Calendars"
 date: 2017-03-03
 ---
 

@@ -1,4 +1,10 @@
-﻿I work in the Frederick Seitz Materials Research Laboratory (MRL) where researchers create devices smaller than your fingernail. To accomplish this, we write patterns on substrates, usually made of thermally grown silicon or glass (among a myriad other materials), using electrons or light to create a pattern, which is then developed in a process exactly like [photography](https://en.wikipedia.org/wiki/Photography). After that, we employ some combination of etching and material deposition to fill the pattern.
+﻿---
+layout: post
+title: "First post"
+date: 2017-03-03
+---
+
+I work in the Frederick Seitz Materials Research Laboratory (MRL) where researchers create devices smaller than your fingernail. To accomplish this, we write patterns on substrates, usually made of thermally grown silicon or glass (among a myriad other materials), using electrons or light to create a pattern, which is then developed in a process exactly like [photography](https://en.wikipedia.org/wiki/Photography). After that, we employ some combination of etching and material deposition to fill the pattern.
 
 In a building where hundreds of researchers work on their individual projects, it is necessary to organize who can use a piece of equipment during some set times. The MRL staff have kindly developed an online scheduling system to create some order.
 
