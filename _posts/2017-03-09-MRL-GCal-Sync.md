@@ -10,20 +10,26 @@ In a building where hundreds of researchers work on their individual projects, i
 
 Below is an example of what the schedule looks like for E-beam Evaporator 4:
 &nbsp;
+&nbsp;
 
 ![E-beam 4 Schedule](/assets/images/2017-03-05-mrl-schedule.png)
+&nbsp;
 &nbsp;
 
 A researcher can see which other users are using a piece of equipment at a given time, and if given sufficient privileges, he or she can reserve time. Let us suppose that a researcher reserved a time slot. Then the home page of the researcher displays all of the sessions he or she signed up for.
 &nbsp;
+&nbsp;
 
 ![Scheduled sessions](/assets/images/2017-03-05-scheduled-sessions.png)
+&nbsp;
 &nbsp;
 
 This is already a great service that the MRL staff provides, but what if you would like to sync up your schedule with your Google Calendar (or other calendar of choice)? 
 &nbsp;
+&nbsp;
 
 ![Initial Google Calendar](/assets/images/2017-03-05-initial-cal.png)
+&nbsp;
 &nbsp;
 
 It is admittedly quite trivial to look between the scheduled sessions and your Google Calendar and just click and drag your mouse to create an event, but a common problem is that schedules are quite dynamic because samples do not work out or users cancel their schedule, opening up new time slots that you would like to take. It can be difficult to track all of those changes, so I implemented a new way to show these changes on my Google Calendar.
@@ -32,8 +38,10 @@ The basic idea is that I scraped information from the table of scheduled session
 
 To start, I implemented [mechanicalsoup](https://github.com/hickford/MechanicalSoup) to log into the calendar system:
 &nbsp;
+&nbsp;
 
 ![Log In screen](/assets/images/2017-03-05-mrl-login.png)
+&nbsp;
 &nbsp;
 
 As it turns out, Python really does make everything easy:
@@ -49,9 +57,30 @@ login_form.select('#usrPswd')[0]['value'] = password
 home_page = browser.submit(login_form, login_page.url)
 ```
 
-This returns the page which contains the table of scheduled sessions. The code takes all the rows from that particular table, cleans it up, and returns a list of of three items: the equipment name, the start time, and the end time.
+This returns the page which contains the table of scheduled sessions. The code takes all the relevant rows from that table, cleans it up, and returns a list of of three items: the equipment name, the start time, and the end time.:
 
-The last part is a routine which first clears the schedule then reinserts all the events, which may or may not be the best solution to replacing the schedule. I think that in the end, it probably would take about the same running time to check before deleting vs. completely deleting then reinserting everything.
+```
+schedule_div = homePage.find(text='Scheduled sessions in the next 7 days').parent.parent
+schedule_rows = schedule_div.find_all('tr')
+schedule = []
+
+for row in schedule_rows:
+	columns = row.find_all('td')
+	schedule_item = []
+	
+	for column in columns:
+		schedule_item.append(column.string)
+
+	schedule.append(schedule_item)
+	
+schedule.pop(0)
+for item in schedule:
+	item.pop(3)
+```
+
+The table is uniquely defined by the text in the first line. The 0th line of the table are headers and are taken out. The last column of each item in the schedule is a usage code, which isn't particularly useful, so it's also thrown out.
+
+The last part is a routine which first clears the schedule then reinserts all the events (I didn't show code for this part because you can look at the repository or find the Google API examples), which may or may not be the best solution to replacing the schedule. I think that in the end, it probably would take about the same running time to check before deleting vs. completely deleting then reinserting everything.
 
 Using the correct datetime object to send into the event body (which contains information like equipment name and start and end times) was one of the trickier parts, but it turned out that it required just a simple change to the pattern detection string:
 
@@ -63,8 +92,10 @@ def extractDatetime(datetime_string):
 
 There are some other issues with dealing with RFC3339 formatting and making sure you're in the correct time zone, but aside from that the workflow is relatively simple. The final product looks like this:
 &nbsp;
+&nbsp;
 
 ![Final Google Calendar](/assets/images/2017-03-05-final-cal.png)
+&nbsp;
 &nbsp;
 
 At this point, I'm hoping to graduate soon, so I don't really know how much more I'm willing to work on this, but you could always check out my code on github and make more improvements. One thing I know that can and should absolutely be changed is the hard-coding that is used. In principle, the variables user and password ought to take information from an external file (like how the GCalHelper file accesses `client_secret.json`) so that information is kept safe and the script is not tied to a specific individual. Like I mentioned above, perhaps the MRL staff could implement an API to help the MRL users access schedule data much more easily. You could imagine that doing so could also aid in the development of a mobile app, though I think that is probably still a bit naive and trivial if the MRL staff just release a web version of the scheduling website.
