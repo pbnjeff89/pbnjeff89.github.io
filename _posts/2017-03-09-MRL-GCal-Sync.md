@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Syncing Calendars"
-date: 2017-03-07
+date: 2017-03-09
 ---
 
 I work in the Frederick Seitz Materials Research Laboratory (MRL) where researchers create devices smaller than your fingernail. To accomplish this, we write patterns on substrates, usually made of thermally grown silicon or glass (among a myriad other materials), using electrons or light to create a pattern, which is then developed in a process exactly like [photography](https://en.wikipedia.org/wiki/Photography). After that, we employ some combination of etching and material deposition to fill the pattern.
