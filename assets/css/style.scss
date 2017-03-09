@@ -5,14 +5,16 @@
 
 nav ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  margin: 20px;
+  padding: 20px;
   background-color: #f3f3f3;
   overflow: hidden;
 }
 
 nav ul li {
   float: left;
+  margin: 10px;
+  padding: 10px;
 }
 
 nav ul li a{
@@ -20,25 +22,4 @@ nav ul li a{
   color: #666;
   text-align: center;
   padding: 14px 16 px;
-  text-decoration: none;
-}
-
-footer ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  background-color: #f3f3f3;
-  overflow: hidden;
-}
-
-footer ul li {
-  float: left;
-}
-
-footer ul li a{
-  display: block;
-  color: #666;
-  text-align: center;
-  padding: 14px 16 px;
-  text-decoration: none;
 }
